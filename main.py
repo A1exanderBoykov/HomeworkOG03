@@ -11,6 +11,11 @@ pygame.display.set_caption("Игра Тир")
 icon = pygame.image.load("img/2.jpg")
 pygame.display.set_icon(icon)
 
+# Загрузим фоновое изображение
+background_image = pygame.image.load("img/3.jpg")
+# Масштабируем фоновое изображение под размеры окна
+background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
 target_image = pygame.image.load("img/1.png.png")
 target_width = 80
 target_height = 80
@@ -18,11 +23,12 @@ target_height = 80
 target_x = random.randint(0, SCREEN_WIDTH - target_width)
 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 
-color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
 
 running = True
 while running:
-    screen.fill(color)
+    # Используем фоновое изображение
+    screen.blit(background_image, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
